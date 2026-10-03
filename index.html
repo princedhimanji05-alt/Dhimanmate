@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DhimanMate - Bricks, Cement & Sand Delivered to Your Door</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0d2b45',
+                            darkNavy: '#081c2e',
+                            orange: '#f97316',
+                            orangeHover: '#ea580c',
+                            orangeLight: '#fff7ed',
+                            creamBricks: '#fff7ed',
+                            blueCement: '#eff6ff',
+                            yellowSand: '#fefce8',
+                            cardBorder: '#e2e8f0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-navy text-white text-xs py-2 px-4 text-center font-medium border-b border-gray-800 hidden md:block">
+        <span class="inline-flex items-center gap-4">
+            <span><i class="fa-solid fa-truck-fast text-orange-400 mr-1"></i> Fast Site Delivery across Haridwar, Roorkee, Dehradun & Purkaji Region</span>
+            <span><i class="fa-solid fa-phone text-orange-400 mr-1"></i> Call / WhatsApp: +91 7060606266</span>
+            <span><i class="fa-solid fa-envelope text-orange-400 mr-1"></i> sachindhiman@gmail.com</span>
+        </span>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-orange-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-house-chimney-crack text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1">
+                        <span class="text-2xl font-extrabold text-brand-navy tracking-tight">Dhiman<span class="text-orange-500">Mate</span></span>
+                    </div>
+                    <p class="text-[11px] font-semibold text-gray-500 tracking-wider uppercase -mt-1">Bricks • Cement • Sand</p>
+                </div>
+            </a>
+
+            <!-- NAV LINKS -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-brand-navy font-bold hover:text-orange-500 transition-colors border-b-2 border-orange-500 pb-1">Home</a>
+                <a href="#products" class="text-gray-600 font-medium hover:text-brand-navy transition-colors">Products</a>
+                <a href="javascript:void(0)" onclick="openBulkQuoteModal()" class="text-gray-600 font-medium hover:text-brand-navy transition-colors">Bulk Order</a>
+                <a href="javascript:void(0)" onclick="openTrackOrderModal()" class="text-gray-600 font-medium hover:text-brand-navy transition-colors">Track Order</a>
+                <a href="#about" class="text-gray-600 font-medium hover:text-brand-navy transition-colors">About Us</a>
+                <a href="#contact" class="text-gray-600 font-medium hover:text-brand-navy transition-colors">Contact</a>
+            </nav>
+
+            <!-- RIGHT ACTIONS -->
+            <div class="flex items-center gap-4">
+                <!-- Search Icon -->
+                <button onclick="toggleSearchModal()" class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-700 transition-colors">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </button>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCartDrawer()" class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-700 relative transition-colors">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow">0</span>
+                </button>
+
+                <!-- Login / Signup Button -->
+                <button onclick="openLoginModal()" class="hidden sm:inline-flex items-center justify-center bg-brand-navy hover:bg-brand-darkNavy text-white font-semibold px-5 py-2.5 rounded-full text-sm shadow hover:shadow-md transition-all">
+                    Login / Sign Up
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-200 px-6 py-4 space-y-3">
+            <a href="#home" class="block text-brand-navy font-bold py-1">Home</a>
+            <a href="#products" class="block text-gray-600 font-medium py-1">Products</a>
+            <a href="javascript:void(0)" onclick="openBulkQuoteModal()" class="block text-gray-600 font-medium py-1">Bulk Order</a>
+            <a href="javascript:void(0)" onclick="openTrackOrderModal()" class="block text-gray-600 font-medium py-1">Track Order</a>
+            <a href="#about" class="block text-gray-600 font-medium py-1">About Us</a>
+            <a href="#contact" class="block text-gray-600 font-medium py-1">Contact</a>
+            <button onclick="openLoginModal()" class="w-full mt-2 bg-brand-navy text-white font-semibold py-2.5 rounded-full text-sm">
+                Login / Sign Up
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative bg-gradient-to-b from-orange-50/60 via-white to-white py-12 lg:py-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy leading-tight tracking-tight">
+                        Construction Material, <br>
+                        <span class="text-orange-500">
+                            Delivered to Your Door.
+                        </span>
+                    </h1>
+
+                    <p class="text-lg text-gray-600 max-w-xl font-medium leading-relaxed">
+                        Red Bricks, UltraTech & Ambuja Cement & River Sand — reliable quality at competitive prices by <strong>DhimanMate</strong>.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#products" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-orange-500/25 hover:scale-[1.02] transition-all">
+                            <i class="fa-solid fa-cart-shopping"></i> Shop Materials
+                        </a>
+                        <button onclick="openBulkQuoteModal()" class="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-brand-navy font-bold px-7 py-3.5 rounded-full border-2 border-brand-navy shadow-sm hover:scale-[1.02] transition-all">
+                            <i class="fa-solid fa-file-invoice"></i> Get Bulk Quote
+                        </button>
+                    </div>
+
+                    <!-- Value Props Bar -->
+                    <div class="pt-8 border-t border-gray-200/80 grid grid-cols-3 gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 text-brand-navy flex items-center justify-center text-base flex-shrink-0">
+                                <i class="fa-regular fa-circle-check text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brand-navy leading-snug">Best Quality</h4>
+                                <p class="text-[11px] text-gray-500">Materials</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 text-brand-navy flex items-center justify-center text-base flex-shrink-0">
+                                <i class="fa-solid fa-truck-fast text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brand-navy leading-snug">On-Time</h4>
+                                <p class="text-[11px] text-gray-500">Delivery</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 text-brand-navy flex items-center justify-center text-base flex-shrink-0">
+                                <i class="fa-solid fa-tag text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brand-navy leading-snug">Competitive</h4>
+                                <p class="text-[11px] text-gray-500">Prices</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image Banner -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+                        <img id="heroImageBanner" src="images/red-bricks.png" alt="DhimanMate Construction Materials Banner" class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-lg flex items-center justify-between border border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center text-lg font-bold">
+                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-brand-navy">High Quality Construction Materials</p>
+                                    <p class="text-[11px] text-gray-500 font-medium">Direct Site Dispatch | Call 7060606266</p>
+                                </div>
+                            </div>
+                            <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">Available Now</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY CARDS SECTION (3 CARDS) -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- CARD 1: BRICKS -->
+                <div class="bg-[#fff7ed] rounded-3xl p-7 border border-amber-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-44 w-full rounded-2xl overflow-hidden mb-6 bg-amber-100/60 flex items-center justify-center border border-amber-200">
+                            <img src="images/red-bricks.png" alt="Red Bricks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mb-1">Bricks</h3>
+                        <p class="text-xs font-semibold text-gray-600 mb-6">First Quality Red Clay Bricks</p>
+                    </div>
+                    <button onclick="filterCategory('Bricks')" class="w-fit inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-darkNavy text-white font-bold px-6 py-2.5 rounded-full text-xs transition-all group-hover:px-7">
+                        View Products <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 2: CEMENT -->
+                <div class="bg-[#eff6ff] rounded-3xl p-7 border border-blue-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-44 w-full rounded-2xl overflow-hidden mb-6 bg-blue-100/60 flex items-center justify-center border border-blue-200">
+                            <img src="images/ultratech-cement.png" alt="Cement" class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mb-1">Cement</h3>
+                        <p class="text-xs font-semibold text-gray-600 mb-6">OPC | PPC | UltraTech & Ambuja</p>
+                    </div>
+                    <button onclick="filterCategory('Cement')" class="w-fit inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-darkNavy text-white font-bold px-6 py-2.5 rounded-full text-xs transition-all group-hover:px-7">
+                        View Products <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- CARD 3: SAND -->
+                <div class="bg-[#fffbe6] rounded-3xl p-7 border border-yellow-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-44 w-full rounded-2xl overflow-hidden mb-6 bg-yellow-100/60 flex items-center justify-center border border-yellow-200">
+                            <img src="images/river-sand.png" alt="River Sand" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mb-1">Sand</h3>
+                        <p class="text-xs font-semibold text-gray-600 mb-6">Clean River Sand (per quintal)</p>
+                    </div>
+                    <button onclick="filterCategory('Sand')" class="w-fit inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-darkNavy text-white font-bold px-6 py-2.5 rounded-full text-xs transition-all group-hover:px-7">
+                        View Products <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR PRODUCTS SECTION -->
+    <section id="products" class="py-14 bg-gray-50 border-t border-b border-gray-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-brand-navy tracking-tight">Popular Products</h2>
+                </div>
+
+                <a href="javascript:void(0)" onclick="filterCategory('All')" class="text-sm font-bold text-brand-navy hover:text-orange-500 transition-colors inline-flex items-center gap-1">
+                    View All Products <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Populated dynamically via script.js -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITION BAR (4 COLUMNS) -->
+    <section class="py-10 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Prop 1 -->
+                <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-gray-50 transition-colors">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-brand-navy text-sm">Fast & Safe Delivery</h4>
+                        <p class="text-xs text-gray-500 font-medium">Get your order on time</p>
+                    </div>
+                </div>
+
+                <!-- Prop 2 -->
+                <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-gray-50 transition-colors">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-brand-navy text-sm">Quality Assured</h4>
+                        <p class="text-xs text-gray-500 font-medium">Only the best materials</p>
+                    </div>
+                </div>
+
+                <!-- Prop 3 -->
+                <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-gray-50 transition-colors">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-tag"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-brand-navy text-sm">Best Prices</h4>
+                        <p class="text-xs text-gray-500 font-medium">Value for your money</p>
+                    </div>
+                </div>
+
+                <!-- Prop 4 -->
+                <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-gray-50 transition-colors">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-brand-navy text-sm">24/7 Support</h4>
+                        <p class="text-xs text-gray-500 font-medium">We're here to help</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-brand-navy mb-8 tracking-tight">What Our Customers Say</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Rohit Sharma" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm leading-snug">Rohit Sharma</h4>
+                            <p class="text-[11px] text-gray-400 font-medium">Haridwar</p>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 text-xs gap-1 mb-2">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed font-medium">
+                        "Very good quality red bricks and timely delivery by DhimanMate. Highly recommended!"
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Amit Kumar" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm leading-snug">Amit Kumar</h4>
+                            <p class="text-[11px] text-gray-400 font-medium">Roorkee</p>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 text-xs gap-1 mb-2">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed font-medium">
+                        "UltraTech and Ambuja cement quality is genuine and rates are very reasonable. Will order again."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Sandeep Joshi" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm leading-snug">Sandeep Joshi</h4>
+                            <p class="text-[11px] text-gray-400 font-medium">Dehradun</p>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 text-xs gap-1 mb-2">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed font-medium">
+                        "River sand is clean and top quality per quintal. Direct dispatch on 7060606266 was very smooth!"
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-brand-navy text-gray-300 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-gray-800">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-1 space-y-3">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-house-chimney-crack text-sm"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-extrabold text-white tracking-tight">Dhiman<span class="text-orange-500">Mate</span></span>
+                            <p class="text-[10px] font-semibold text-gray-400 uppercase">Bricks • Cement • Sand</p>
+                        </div>
+                    </a>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Your trusted building partner by Sachin Dhiman. Premier site supply in U.P. & Uttarakhand.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-400 font-medium">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Products</a></li>
+                        <li><a href="javascript:void(0)" onclick="openBulkQuoteModal()" class="hover:text-white transition-colors">Bulk Order</a></li>
+                        <li><a href="javascript:void(0)" onclick="openTrackOrderModal()" class="hover:text-white transition-colors">Track Order</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Our Products -->
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Our Products</h4>
+                    <ul class="space-y-2 text-xs text-gray-400 font-medium">
+                        <li><a href="javascript:void(0)" onclick="filterCategory('Bricks')" class="hover:text-white transition-colors">Red Bricks</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('Cement')" class="hover:text-white transition-colors">UltraTech Cement</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('Cement')" class="hover:text-white transition-colors">Ambuja Cement</a></li>
+                        <li><a href="javascript:void(0)" onclick="filterCategory('Sand')" class="hover:text-white transition-colors">River Sand</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Us -->
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Contact Us</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-400 font-medium">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-orange-400 w-4"></i>
+                            <a href="tel:7060606266" class="hover:text-white font-bold text-white">+91 7060606266</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-green-400 w-4"></i>
+                            <a href="https://wa.me/917060606266" target="_blank" class="hover:text-white font-bold text-white">WhatsApp Us (7060606266)</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-orange-400 w-4"></i>
+                            <a href="mailto:sachindhiman@gmail.com" class="hover:text-white">sachindhiman@gmail.com</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 w-4 mt-0.5"></i>
+                            <span>Purkaji, Kailanpur, U.P. - 251327</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 5: Get Updates -->
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-2">Get Updates</h4>
+                    <p class="text-[11px] text-gray-400 mb-3">Subscribe to DhimanMate newsletter for latest material rates.</p>
+                    <form onsubmit="handleNewsletter(event)" class="flex items-center bg-gray-800 rounded-lg overflow-hidden p-1 border border-gray-700">
+                        <input type="email" placeholder="sachindhiman@gmail.com" required class="bg-transparent text-xs text-white px-3 py-2 w-full focus:outline-none placeholder-gray-500">
+                        <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded transition-colors flex items-center justify-center">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Socials -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>© 2025 DhimanMate. All rights reserved.</p>
+                <div class="flex items-center gap-4 text-base">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT CART DRAWER -->
+    <div id="cartDrawerBackdrop" class="fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCartDrawer()"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-5 border-b border-gray-200 flex items-center justify-between bg-brand-navy text-white">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping text-orange-400"></i>
+                <h3 class="font-extrabold text-lg">Your DhimanMate Cart</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-4">
+            <!-- Items rendered dynamically -->
+        </div>
+
+        <div class="p-5 border-t border-gray-200 bg-gray-50 space-y-3">
+            <div class="flex justify-between items-center text-sm font-semibold text-gray-600">
+                <span>Subtotal</span>
+                <span id="cartSubtotal" class="text-brand-navy font-bold text-base">₹ 0</span>
+            </div>
+            <div class="flex justify-between items-center text-xs text-gray-500">
+                <span>Estimated Delivery</span>
+                <span class="text-green-600 font-bold">Calculated at checkout</span>
+            </div>
+            <button onclick="proceedToCheckout()" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-full shadow-lg text-sm transition-all flex items-center justify-center gap-2">
+                Proceed to Checkout <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- BULK QUOTE MODAL -->
+    <div id="bulkQuoteModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative transform scale-95 transition-transform duration-300">
+            <button onclick="closeBulkQuoteModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="mb-6">
+                <span class="text-xs font-bold text-orange-500 uppercase tracking-wider">Direct Site Delivery & Wholesale</span>
+                <h3 class="text-2xl font-extrabold text-brand-navy">Get a Bulk Order Quote</h3>
+                <p class="text-xs text-gray-500">Call/WhatsApp: 7060606266 or submit request below.</p>
+            </div>
+
+            <form onsubmit="handleBulkQuoteSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Your Full Name</label>
+                    <input type="text" required placeholder="e.g. Ramesh Kumar" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Phone / WhatsApp Number</label>
+                    <input type="tel" required value="7060606266" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Material Required</label>
+                        <select class="w-full text-xs px-3 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                            <option>Red Bricks</option>
+                            <option>Ultratech Cement (43 Grade)</option>
+                            <option>Ambuja Cement (53 Grade)</option>
+                            <option>River Sand</option>
+                            <option>Multiple / Mixed Order</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Approx. Quantity</label>
+                        <input type="text" required placeholder="e.g. 5000 bricks / 50 bags" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Delivery Location</label>
+                    <input type="text" required placeholder="e.g. Haridwar Road, Roorkee" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-brand-navy hover:bg-brand-darkNavy text-white font-bold py-3.5 rounded-xl text-sm shadow transition-all">
+                    Submit Quote Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIN / SIGNUP MODAL -->
+    <div id="loginModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeLoginModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-orange-100 text-orange-500 rounded-2xl mx-auto flex items-center justify-center text-xl mb-3">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-brand-navy">Welcome to DhimanMate</h3>
+                <p class="text-xs text-gray-500">Sign in to track orders & view instant quotes</p>
+            </div>
+
+            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Mobile Number or Email</label>
+                    <input type="text" required placeholder="7060606266 or sachindhiman@gmail.com" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Password / OTP</label>
+                    <input type="password" required placeholder="••••••••" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl text-sm shadow transition-all">
+                    Login / Continue
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TRACK ORDER MODAL -->
+    <div id="trackOrderModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeTrackOrderModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-blue-100 text-brand-navy rounded-2xl mx-auto flex items-center justify-center text-xl mb-3">
+                    <i class="fa-solid fa-truck-location"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-brand-navy">Track Your Order</h3>
+                <p class="text-xs text-gray-500">Enter your Order ID or call 7060606266</p>
+            </div>
+
+            <form onsubmit="handleTrackSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Order ID</label>
+                    <input type="text" required placeholder="e.g. DM-98231" class="w-full text-xs px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-brand-navy hover:bg-brand-darkNavy text-white font-bold py-3.5 rounded-xl text-sm shadow transition-all">
+                    Track Order Status
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
